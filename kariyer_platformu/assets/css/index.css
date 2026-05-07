@@ -1,0 +1,204 @@
+/* ==========================================================================
+   ANA SAYFA ÖZEL STİLLERİ (index.css - Aydınlık Tema)
+   ========================================================================== */
+
+/* --- Navigasyon Çubuğu (Lacivert Kurumsal Kimlik) --- */
+.navbar-glass {
+    background: var(--kbu-lacivert);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    font-size: 20px;
+    font-weight: 800;
+    color: white !important;
+    letter-spacing: 1px;
+}
+
+.nav-brand span {
+    color: var(--kbu-kirmizi);
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-left: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: white !important;
+}
+
+.nav-divider {
+    margin-left: 25px;
+    color: white;
+    opacity: 0.3;
+}
+
+.nav-user {
+    margin-left: 25px;
+    font-size: 13px;
+    color: white;
+}
+
+.nav-logout {
+    color: #FCA5A5 !important;
+}
+
+.btn-nav-register {
+    background: var(--kbu-kirmizi);
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: white !important;
+}
+
+/* --- Hero (Karşılama) Alanı --- */
+.hero-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--kbu-lacivert); /* Başlık artık lacivert */
+}
+
+.hero-title span {
+    color: var(--kbu-kirmizi);
+}
+
+.hero-desc {
+    color: var(--text-muted); /* Gri metin */
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.visitor-desc {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+}
+
+.hero-pill {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    border: 1px solid #E2E8F0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.hero-pill i {
+    color: var(--kbu-kirmizi);
+    margin-right: 10px;
+}
+
+.hero-pill span {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--kbu-lacivert);
+}
+
+.btn-hero {
+    width: auto;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 15px;
+}
+
+.btn-hero i {
+    margin-left: 10px;
+}
+
+/* --- Kartlar ve Grid Yapısı --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.action-card {
+    text-align: center;
+    padding: 40px 30px;
+    transition: transform 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-8px);
+}
+
+.action-icon {
+    font-size: 40px;
+    color: var(--kbu-kirmizi);
+    margin-bottom: 20px;
+}
+
+.action-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--kbu-lacivert); /* Kart içi başlıklar lacivert */
+}
+
+.action-card p {
+    color: var(--text-muted); /* Kart içi metinler gri */
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.feature-card {
+    padding: 30px 20px;
+}
+
+.feature-icon {
+    font-size: 30px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+.btn-block {
+    display: block;
+}
+
+/* İkincil buton stili (Kırmızı yerine lacivert) */
+.btn-secondary {
+    background-color: var(--kbu-lacivert) !important;
+}
+
+.btn-secondary:hover {
+    background-color: #0a1532 !important;
+    box-shadow: 0 4px 12px rgba(15, 32, 75, 0.3) !important;
+}
