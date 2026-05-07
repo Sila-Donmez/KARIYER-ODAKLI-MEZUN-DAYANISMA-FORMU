@@ -22,7 +22,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role ENUM('student', 'graduate', 'admin') NOT NULL,
     is_verified BOOLEAN DEFAULT FALSE,
-    birth_date DATE NULL,
     gender ENUM('male', 'female', 'other') NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NULL
