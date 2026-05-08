@@ -90,4 +90,25 @@ function reset_and_seed_categories($conn) {
 
     $stmt->close();
 }
+/* ===============================
+    🗑️ FORUM & YORUM SİLME FONKSİYONLARI
+================================ */
+function delete_forum_post($conn, $post_id, $user_id) {
+    $stmt = $conn->prepare("DELETE FROM forum_posts WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $post_id, $user_id);
+    if ($stmt->execute()) {
+        $stmt2 = $conn->prepare("DELETE FROM forum_comments WHERE post_id = ?");
+        $stmt2->bind_param("i", $post_id);
+        $stmt2->execute();
+        return true;
+    }
+    return false;
+}
+
+function delete_forum_comment($conn, $comment_id, $user_id) {
+    $stmt = $conn->prepare("DELETE FROM forum_comments WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $comment_id, $user_id);
+    return $stmt->execute();
+}
+
 ?>
