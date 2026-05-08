@@ -1,5 +1,6 @@
 # KARIYER-ODAKLI-MEZUN-DAYANISMA-FORMU
 Folder Structure
+```text
 kariyer_platformu/
 │
 ├── assets/
@@ -16,8 +17,8 @@ kariyer_platformu/
 │   │   └── view_profile.css
 │   │
 │   └── js/
-│      ├── app_features.js
-│      └── auth_validation.js
+│       ├── app_features.js
+│       └── auth_validation.js
 │
 ├── auth/
 │   ├── login.php
@@ -57,3 +58,4 @@ kariyer_platformu/
 ├── index.php
 ├── profile.php
 └── view_profile.php
+```
