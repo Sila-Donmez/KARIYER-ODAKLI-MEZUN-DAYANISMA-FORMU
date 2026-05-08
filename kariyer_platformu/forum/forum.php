@@ -8,8 +8,13 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$role = $_SESSION['role'];
+if (isset($_GET['delete_id'])) {
+    delete_forum_post($conn, intval($_GET['delete_id']), $_SESSION['user_id']);
+    header("Location: forum.php");
+    exit();
+}
 
+$role = $_SESSION['role'];
 $catFilter = isset($_GET['cat']) ? intval($_GET['cat']) : 0;
 $q = isset($_GET['q']) ? clean($_GET['q']) : '';
 
@@ -20,15 +25,11 @@ $sql = "SELECT fp.*, fc.name as category_name, u.first_name, u.last_name,
         LEFT JOIN users u ON fp.user_id = u.id
         WHERE 1=1";
 
-if ($catFilter > 0) {
-    $sql .= " AND fp.category_id = $catFilter";
-}
-
+if ($catFilter > 0) { $sql .= " AND fp.category_id = $catFilter"; }
 if ($q != '') {
     $q_safe = $conn->real_escape_string($q);
     $sql .= " AND (fp.title LIKE '%$q_safe%' OR fp.content LIKE '%$q_safe%')";
 }
-
 $sql .= " ORDER BY fp.created_at DESC";
 
 $posts = $conn->query($sql);
@@ -40,23 +41,17 @@ $categories = $conn->query("SELECT * FROM forum_categories");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum | KBÜ Mentorluk</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/app.css"> 
     <link rel="stylesheet" href="../assets/css/forum.css">
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
     <div class="app-container">
-        
-        <!-- MERKEZİ MENÜ ÇAĞRILDI (Yol bir üst dizine çıkacak şekilde ayarlandı) -->
         <?php include '../includes/sidebar.php'; ?>
 
         <main class="main-content">
-            
             <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <h1 class="page-title">Kariyer Forumu</h1>
@@ -72,9 +67,7 @@ $categories = $conn->query("SELECT * FROM forum_categories");
                 <select name="cat" onchange="this.form.submit()">
                     <option value="0">Tüm Kategoriler</option>
                     <?php while($cat = $categories->fetch_assoc()): ?>
-                        <option value="<?= $cat['id'] ?>" <?= $catFilter==$cat['id']?'selected':'' ?>>
-                            <?= $cat['name'] ?>
-                        </option>
+                        <option value="<?= $cat['id'] ?>" <?= $catFilter==$cat['id']?'selected':'' ?>><?= $cat['name'] ?></option>
                     <?php endwhile; ?>
                 </select>
             </form>
@@ -91,12 +84,9 @@ $categories = $conn->query("SELECT * FROM forum_categories");
                             <?php endwhile; ?>
                         </select>
                     </div>
-                    <textarea name="content" required placeholder="Sorunuzu veya düşüncenizi detaylıca açıklayın..."></textarea>
-                    
+                    <textarea name="content" required placeholder="Detaylıca açıklayın..."></textarea>
                     <div class="form-footer">
-                        <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted);">
-                            <input type="checkbox" name="is_anonymous" value="1"> Anonim olarak paylaş
-                        </label>
+                        <label><input type="checkbox" name="is_anonymous" value="1"> Anonim</label>
                         <button type="submit" class="btn-primary" style="width: auto; padding: 10px 25px;">Paylaş</button>
                     </div>
                 </form>
@@ -105,25 +95,31 @@ $categories = $conn->query("SELECT * FROM forum_categories");
             <div class="post-list">
                 <?php if($posts && $posts->num_rows > 0): ?>
                     <?php while($p = $posts->fetch_assoc()): ?>
-                        <a href="post_detail.php?id=<?= $p['id'] ?>" class="post-card">
-                            <span class="post-badge"><?= $p['category_name'] ?></span>
-                            <h3 class="post-title"><?= htmlspecialchars($p['title']) ?></h3>
-                            <p class="post-excerpt"><?= mb_substr(htmlspecialchars($p['content']),0,200) ?>...</p>
-                            
-                            <div class="post-meta">
-                                <span><i class="fa-solid fa-user"></i> <?= $p['is_anonymous'] ? 'Anonim Kullanıcı' : $p['first_name'].' '.$p['last_name'] ?></span>
-                                <span><i class="fa-solid fa-comment"></i> <?= $p['comment_count'] ?> Yorum</span>
-                            </div>
-                        </a>
+                        <div class="post-card-container" style="position: relative;">
+                            <a href="post_detail.php?id=<?= $p['id'] ?>" class="post-card">
+                                <span class="post-badge"><?= $p['category_name'] ?></span>
+                                <h3 class="post-title"><?= htmlspecialchars($p['title']) ?></h3>
+                                <p class="post-excerpt"><?= mb_substr(htmlspecialchars($p['content']),0,200) ?>...</p>
+                                
+                                <div class="post-meta">
+                                    <span><i class="fa-solid fa-user"></i> <?= $p['is_anonymous'] ? 'Anonim Kullanıcı' : $p['first_name'].' '.$p['last_name'] ?></span>
+                                    <span><i class="fa-solid fa-comment"></i> <?= $p['comment_count'] ?> Yorum</span>
+                                </div>
+                            </a>
+
+                            <?php if($p['user_id'] == $_SESSION['user_id']): ?>
+                                <a href="forum.php?delete_id=<?= $p['id'] ?>" 
+                                   onclick="return confirm('Silmek istediğine emin misin?');" 
+                                   style="position: absolute; bottom: 20px; right: 20px; color: #ef4444; z-index: 10; text-decoration: none; font-size: 14px;">
+                                    <i class="fa-solid fa-trash"></i> Sil
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <div class="glass-card" style="text-align: center; padding: 40px; color: var(--text-muted);">
-                        <i class="fa-solid fa-folder-open" style="font-size: 40px; margin-bottom: 15px; color: #cbd5e1;"></i>
-                        <p>Henüz bu kriterlere uygun bir konu bulunmuyor.</p>
-                    </div>
+                    <p>Konu bulunamadı.</p>
                 <?php endif; ?>
             </div>
-
         </main>
     </div>
 
@@ -135,9 +131,7 @@ $categories = $conn->query("SELECT * FROM forum_categories");
                 url: 'forum_operations.php',
                 type: 'POST',
                 data: $(this).serialize() + '&action=create_post',
-                success: function() {
-                    location.reload();
-                }
+                success: function() { location.reload(); }
             });
         });
     });
