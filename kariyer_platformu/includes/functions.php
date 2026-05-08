@@ -110,5 +110,17 @@ function delete_forum_comment($conn, $comment_id, $user_id) {
     $stmt->bind_param("ii", $comment_id, $user_id);
     return $stmt->execute();
 }
+/* ===============================
+    🏢 ŞİRKET DENEYİMİ SİLME
+================================ */
+function delete_experience($conn, $exp_id, $user_id) {
+    // Tablo adının company_reviews olduğundan emin olalım
+    $stmt = $conn->prepare("DELETE FROM company_reviews WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $exp_id, $user_id);
+    $stmt->execute();
+    
+    // Etkilenen satır sayısı 0'dan büyükse silme başarılıdır
+    return $stmt->affected_rows > 0;
+}
 
 ?>
