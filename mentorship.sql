@@ -24,7 +24,6 @@ CREATE TABLE users (
     is_verified BOOLEAN DEFAULT FALSE,
     gender ENUM('male', 'female', 'other') NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMP NULL
 );
 
 CREATE TABLE students (
