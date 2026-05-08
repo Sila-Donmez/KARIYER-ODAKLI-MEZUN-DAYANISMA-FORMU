@@ -118,7 +118,7 @@ $skills_string = implode(",", $user_skill_names);
     <link rel="stylesheet" href="assets/css/profile.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        .btn-search-red { height: 48px; padding: 0 35px; background-color: #D32F2F; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
+        .btn-search-red { height: 48px; padding: 0 35px; background-color: #D32F2F; color: white !important; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
         .btn-search-red:hover { background-color: #B71C1C; transform: translateY(-1px); }
         .file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border: 2px dashed #cbd5e1; border-radius: 12px; background-color: #f8fafc; cursor: pointer; transition: all 0.3s; }
         .file-upload-label:hover { border-color: #D32F2F; background-color: #fef2f2; }
@@ -144,6 +144,8 @@ $skills_string = implode(",", $user_skill_names);
                         <?php endif; ?>
                     </div>
 
+                    <!-- Sadece mezunlar için Kariyer & Deneyim kısmı -->
+                    <?php if ($role == 'graduate'): ?>
                     <div class="glass-card" style="padding: 25px 20px; margin-top: 20px; text-align: center;">
                         <h3 class="profile-section-title" style="font-size: 15px;"><i class="fa-solid fa-briefcase"></i> Kariyer & Deneyim</h3>
                         <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">Şirket geçmişinizi güncelleyin.</p>
@@ -151,6 +153,7 @@ $skills_string = implode(",", $user_skill_names);
                             <i class="fa-solid fa-plus"></i> Yeni Deneyim Ekle
                         </a>
                     </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="profile-form-area">
