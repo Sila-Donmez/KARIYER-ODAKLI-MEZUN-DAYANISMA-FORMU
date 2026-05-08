@@ -1,0 +1,133 @@
+/* ==========================================================================
+   ANA CSS DOSYASI (Ortak Kullanım İçin - V4 Aydınlık & Ferah Tema)
+   Tema: Karabük Üniversitesi (Beyaz Ağırlıklı, Lacivert ve Kırmızı Vurgular)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Kurumsal KBÜ Renkleri */
+  --kbu-lacivert: #0F204B; 
+  --kbu-kirmizi: #C8102E;
+  --kbu-beyaz: #FFFFFF;
+  
+  /* Açık Tema Renkleri */
+  --bg-light: #F4F7F6;       /* Çok uçuk ferah bir gri/beyaz arka plan */
+  --text-dark: #1E293B;      /* Ana metinler için yumuşak siyah */
+  --text-muted: #64748B;     /* İkincil metinler için gri */
+  --card-shadow: 0 10px 30px rgba(15, 32, 75, 0.08); /* Kartlara zarif lacivert gölge */
+  
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- AYDINLIK ARKA PLAN --- */
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--kbu-lacivert);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--kbu-kirmizi);
+}
+
+/* --- BEYAZ KART YAPISI (Eski Cam Efekti Yerine) --- */
+.glass-card {
+  background: var(--kbu-beyaz);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  padding: 40px;
+}
+
+/* --- FORMLAR VE INPUTLAR (Aydınlık Temaya Uygun) --- */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--kbu-lacivert); /* Koyu lacivert başlıklar */
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px 20px;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1; /* İnce gri kenarlık */
+  border-radius: 16px;
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-control::placeholder {
+  color: #94A3B8;
+}
+
+.form-control:focus {
+  border-color: var(--kbu-kirmizi);
+  box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1); /* Odaklanınca etrafında kırmızı parlama */
+}
+
+/* --- BUTONLAR --- */
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--kbu-kirmizi);
+  color: white !important;
+  border: none;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #a00c24;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
+}
+
+/* Uyarı/Hata Mesajları */
+.alert {
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.alert-error {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #DC2626;
+}

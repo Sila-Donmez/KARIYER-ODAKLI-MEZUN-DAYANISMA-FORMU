@@ -1,0 +1,258 @@
+/* ==========================================================================
+   PROFİL SAYFASI VE SOL MENÜ STİLLERİ (profile.css)
+   ========================================================================== */
+
+/* --- APP DÜZENİ VE SOL MENÜ --- */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--kbu-lacivert);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed; 
+    height: 100vh;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-brand {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.sidebar-brand span {
+    color: var(--kbu-kirmizi);
+}
+
+.sidebar-nav {
+    padding: 20px 0;
+    flex: 1;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-nav a i {
+    width: 25px;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    color: white !important;
+    background-color: rgba(255,255,255,0.05);
+    border-left-color: var(--kbu-kirmizi);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 280px; 
+    padding: 40px;
+}
+
+/* --- PROFİL SAYFASI İÇERİK DÜZENİ --- */
+.profile-header {
+    margin-bottom: 30px;
+}
+.profile-header h1 {
+    font-size: 24px;
+    color: var(--kbu-lacivert);
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Sol Taraf: Özet Kartı */
+.profile-sidebar {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    background-color: var(--kbu-lacivert);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 10px 20px rgba(15, 32, 75, 0.2);
+}
+
+.profile-name {
+    font-size: 22px;
+    color: var(--kbu-lacivert);
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Sağ Taraf: Düzenleme Formu */
+.profile-section-title {
+    font-size: 16px;
+    color: var(--kbu-lacivert);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.skill-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.02);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.skill-checkbox-wrapper:hover {
+    border-color: var(--kbu-lacivert);
+}
+
+.skill-checkbox-wrapper input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.skill-checkbox-wrapper span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row > div {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* --- DİNAMİK YETENEK EKLEME (TAG INPUT) STİLLERİ --- */
+.skill-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.skill-input-group input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.btn-add-skill {
+    background-color: var(--kbu-lacivert);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0 20px;
+    font-weight: 800;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add-skill:hover {
+    background-color: var(--kbu-kirmizi);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Eklenen Yetenek Kutucuğu (Badge) */
+.skill-badge {
+    background-color: rgba(15, 32, 75, 0.05);
+    border: 1px solid rgba(15, 32, 75, 0.1);
+    color: var(--kbu-lacivert);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.skill-badge .remove-skill {
+    color: var(--kbu-kirmizi);
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.skill-badge .remove-skill:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

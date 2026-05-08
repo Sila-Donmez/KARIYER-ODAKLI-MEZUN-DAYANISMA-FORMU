@@ -1,0 +1,181 @@
+/* ==========================================================================
+   GİRİŞ VE KAYIT SAYFALARI ÖZEL STİLLERİ (auth.css - Sabit Lacivert Tema)
+   ========================================================================== */
+
+/* Sabit ve Göz Yormayan Lacivert Arka Plan */
+.auth-page {
+    background-color: var(--kbu-lacivert);
+    background-image: linear-gradient(135deg, #18316e 0%, #0a1532 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Koyu Temaya Uygun Glass-Card (Cam Efekti) */
+.auth-page .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* İkon Kutusu */
+.auth-page .icon-box {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+}
+
+.auth-page .icon-box i {
+    font-size: 32px;
+    color: white !important;
+}
+
+/* Başlıklar ve Metinler */
+.auth-page h2 {
+    font-size: 24px; /* Başlık boyutu daraltıldı */
+    font-weight: 800; 
+    letter-spacing: -1px;
+    color: white !important;
+}
+
+.auth-page h2 span {
+    color: var(--kbu-kirmizi) !important;
+}
+
+.auth-page .subtitle {
+    font-size: 12px; 
+    color: rgba(255, 255, 255, 0.5); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/* Form Elemanları (Kompakt Tasarım) */
+.auth-page .form-group {
+    margin-bottom: 15px; /* Boşluklar daraltıldı */
+    position: relative;
+}
+
+.auth-page .form-group label {
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+
+.auth-page .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px 15px; /* Kutu içi boşluklar daraltıldı */
+    padding-left: 45px;
+    font-size: 13px; /* Yazı boyutu küçültüldü */
+    width: 100%;
+    border-radius: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.auth-page .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-page .form-control:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--kbu-kirmizi);
+}
+
+.auth-page .input-icon {
+    position: absolute; 
+    left: 15px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Yan yana form grupları (Kayıt Formu İçin) */
+.auth-page .flex-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px; /* Boşluk daraltıldı */
+}
+
+.auth-page .flex-group > div {
+    flex: 1;
+}
+
+.auth-page .flex-group .form-group {
+    margin-bottom: 0;
+}
+
+/* Select (Açılır Menü) Özelleştirmeleri ve Düzeltmeleri */
+.auth-page select.form-control {
+    appearance: none;
+    cursor: pointer;
+}
+
+.auth-page select.form-control option {
+    background-color: #0a1532 !important; /* Görünmeme sorununu çözen koyu lacivert zemin */
+    color: #ffffff !important; /* Okunabilirliği artıran beyaz yazı */
+    font-weight: 600;
+}
+
+/* Alt Kısım ve Linkler */
+.auth-page .auth-footer {
+    text-align: center; 
+    margin-top: 25px; 
+    padding-top: 20px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-page .auth-footer p {
+    font-size: 13px; 
+    color: rgba(255, 255, 255, 0.6); 
+    font-weight: 600;
+}
+
+.auth-page .auth-footer a {
+    color: var(--kbu-kirmizi); 
+    font-weight: 800; 
+    margin-left: 5px;
+}
+
+/* Arka Plandaki Büyük KBÜ Yazısı */
+.bg-text-kbu {
+    position: fixed; 
+    bottom: -20px; 
+    right: 20px; 
+    font-size: 15vw; 
+    font-weight: 900; 
+    color: rgba(255, 255, 255, 0.02); 
+    pointer-events: none; 
+    user-select: none; 
+    z-index: 1;
+}
+/* --- LOGIN VE REGISTER İÇİN HTML'DEN ÇIKARILAN STİLLER --- */
+.auth-header { text-align: center; }
+.input-wrapper { position: relative; }
+.mt-15 { margin-top: 15px; }
+.btn-icon { margin-left: 8px; }
+.alert-icon { margin-right: 5px; }
+.back-link-wrapper { margin-top: 10px; font-size: 11px; }
+.back-link { color: rgba(255,255,255,0.4); text-decoration: underline; }
+.back-link:hover { color: white; }
