@@ -305,22 +305,22 @@ INSERT INTO users
 (first_name, last_name, email, password, role, is_verified, gender) 
 VALUES
 
--- ADMIN
+-- ADMIN (Doğrulanmış)
 ('Admin', 'User', 'admin@mentorhub.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'admin', TRUE, 'other'),
 
--- STUDENTS
-('Ahmet', 'Yılmaz', '2310205051@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'male'),
-('Ayşe', 'Demir', '2310205052@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'female'),
-('Mehmet', 'Kaya', '2310205053@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'male'),
-('Zeynep', 'Çelik', '2310205054@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'female'),
-('Burak', 'Aydın', '2310205055@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'male'),
-('Elif', 'Koç', '2310205056@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'female'),
-('Kerem', 'Şahin', '2310205057@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'male'),
-('Sena', 'Aksoy', '2310205058@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'female'),
-('Eren', 'Kurt', '2310205059@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'male'),
-('Melisa', 'Arslan', '2310205060@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', TRUE, 'female'),
+-- STUDENTS (Doğrulanmamış - is_verified: FALSE)
+('Ahmet', 'Yılmaz', '2310205051@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'male'),
+('Ayşe', 'Demir', '2310205052@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'female'),
+('Mehmet', 'Kaya', '2310205053@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'male'),
+('Zeynep', 'Çelik', '2310205054@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'female'),
+('Burak', 'Aydın', '2310205055@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'male'),
+('Elif', 'Koç', '2310205056@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'female'),
+('Kerem', 'Şahin', '2310205057@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'male'),
+('Sena', 'Aksoy', '2310205058@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'female'),
+('Eren', 'Kurt', '2310205059@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'male'),
+('Melisa', 'Arslan', '2310205060@ogrenci.karabuk.edu.tr', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'student', FALSE, 'female'),
 
--- GRADUATES
+-- GRADUATES (Doğrulanmış)
 ('Can', 'Öztürk', 'canozturk@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'male'),
 ('Selin', 'Yıldız', 'selinyildiz@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'female'),
 ('Mert', 'Demirtaş', 'mertdemirtas@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'male'),
@@ -331,10 +331,10 @@ VALUES
 ('Ceren', 'Taş', 'cerentas@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'female'),
 ('Emre', 'Doğan', 'emredogan@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'male'),
 ('Naz', 'Güneş', 'nazgunes@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'graduate', TRUE, 'female');
-
 -- ==========================================
 -- ADMINS
 -- ==========================================
+
 
 INSERT INTO admins (user_id)
 VALUES (1);
