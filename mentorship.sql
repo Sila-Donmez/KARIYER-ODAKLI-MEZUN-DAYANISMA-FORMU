@@ -44,7 +44,6 @@ CREATE TABLE graduates (
 
 CREATE TABLE admins (
     user_id INT PRIMARY KEY,
-    admin_level INT DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
