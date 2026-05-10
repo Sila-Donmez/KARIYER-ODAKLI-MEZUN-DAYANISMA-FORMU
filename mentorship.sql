@@ -43,7 +43,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role ENUM('student', 'graduate', 'admin') NOT NULL,
     is_verified BOOLEAN DEFAULT FALSE,
-    gender ENUM('male', 'female', 'other') NULL,
+    gender ENUM('male', 'female', 'other') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE students (
 
 CREATE TABLE graduates (
     user_id INT PRIMARY KEY,
-    graduate_year INT NOT NULL,
+    graduate_year INT NULL,
     document_link TEXT NULL,
     is_open_to_mentorship BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
