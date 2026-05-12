@@ -8,6 +8,14 @@ if (!isset($_SESSION['user_id'])) {
 }
 $graduate_id = $_SESSION['user_id'];
 
+// Kullanıcı durumunu kontrol et
+$check_sql = "SELECT role, is_verified FROM users WHERE id = $graduate_id";
+$check_res = mysqli_query($conn, $check_sql);
+$user_status = mysqli_fetch_assoc($check_res);
+
+$is_approved = ($user_status && $user_status['role'] === 'graduate' && $user_status['is_verified'] == 1);
+
+// İlanları çek
 $sql = "SELECT ads_id, title, expertise, created_at FROM mentor_ads WHERE graduate_id = $graduate_id ORDER BY created_at DESC";
 $result = mysqli_query($conn, $sql);
 $my_ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -28,19 +36,33 @@ $total_ads = count($my_ads);
         <?php include '../includes/sidebar.php'; ?>
 
         <main class="main-content">
+            <!-- Onaylı Değilse Uyarı Mesajı -->
+            <?php if (!$is_approved): ?>
+                <div style="background: #fffbeb; border-left: 4px solid #f59e0b; color: #92400e; padding: 15px; margin-bottom: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                    <i class="fa-solid fa-circle-exclamation" style="font-size: 20px;"></i>
+                    <div>
+                        <strong>Hesabınız Henüz Onaylanmadı!</strong><br>
+                        İlan oluşturabilmek için hesabınızın yönetici tarafından doğrulanması gerekmektedir. Lütfen bekleyiniz.
+                    </div>
+                </div>
+            <?php endif; ?>
+
             <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <h1 class="page-title">Mentorlük İlanlarım</h1>
                     <p class="page-subtitle">Toplam <strong><?= $total_ads ?></strong> aktif ilanınız bulunuyor.</p>
                 </div>
-                <a href="mentor_ads_create.php" class="btn-sm btn-action"><i class="fa-solid fa-plus"></i> Yeni İlan Oluştur</a>
+                <!-- Sadece onaylıysa buton görünür -->
+                <?php if ($is_approved): ?>
+                    <a href="mentor_ads_create.php" class="btn-sm btn-action"><i class="fa-solid fa-plus"></i> Yeni İlan Oluştur</a>
+                <?php endif; ?>
             </div>
 
             <div class="mentor-grid">
                 <?php if ($total_ads === 0): ?>
                     <div class="empty-state" style="grid-column: 1 / -1;">
                         <i class="fa-solid fa-folder-open"></i>
-                        <p>Henüz hiç ilan oluşturmadınız. Yukarıdaki butonu kullanarak ilk ilanınızı açabilirsiniz.</p>
+                        <p>Henüz hiç ilan oluşturmadınız.</p>
                     </div>
                 <?php else: ?>
                     <?php foreach ($my_ads as $ad): ?>
